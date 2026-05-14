@@ -1,32 +1,25 @@
-const reactTitles = [
-  "React Fundamentos",
-  "React Principios",
-  "React Conceptos",
-];
+import { Core_Concepts } from "./assets/data.js";
+import Header from "./components/Header/Header.jsx";
+import CoreConcepts from "./components/CoreConcepts/CoreConcepts.jsx";
 
-function getRandomIntInRange(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-function Header() {
-  const titleReact =
-    reactTitles[getRandomIntInRange(0, reactTitles.length - 1)];
-  return (
-    <header>
-      <img src="src/assets/react-logo-xs.png" alt="React logo" />
-      <h1>{titleReact}</h1>
-      <p>
-        ¡Conceptos fundamentales de React que necesitas conocer para desarrollar
-        cualquier app con esta famosa librería!
-      </p>
-    </header>
-  );
-}
-
+//UTILIZAMOS EL PARAMETREO SPREED (...Core_Concepts[i]) PARA PASAR LOS PROPS DE CADA OBJETO DEL ARRAY DE CONCEPTOS FUNDAMENTALES,
+//YA QUE TODAS LAS PROPIEDADES DE CADA OBJETO DEL ARRAY COINCIDEN CON LOS NOMBRES DE LOS PROPS QUE ESPERA EL COMPONENTE CoreConcepts,
+//ASÍ EVITAMOS TENER QUE PASAR CADA PROPIEDAD DE MANERA INDIVIDUAL
 function App() {
   return (
     <div>
       <Header />
+
+      <section id="coreConcepts">
+        <h2>Conceptos Fundamentales</h2>
+        <div>
+          <CoreConcepts {...Core_Concepts[0]} />
+          <CoreConcepts {...Core_Concepts[1]} />
+          <CoreConcepts {...Core_Concepts[2]} />
+          <CoreConcepts {...Core_Concepts[3]} />
+        </div>
+      </section>
+
       <main>
         <h2>¡Comenzamos Picando Código en React!</h2>
       </main>
