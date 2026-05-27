@@ -21,8 +21,9 @@ import { use } from "react";
 //HAY QUE TENER EN CUENTA QUE AL ACTUALIZAR LA PAGINA CON EL ESTADO SE VUELVE A RENDERIZAR EL COMPONENTE,
 //EN CONSOLA VA A MOSTRAR EL VALOR ANTERIOR DEL ESTADO, PORQUE LA ACTUALIZACIÓN DEL ESTADO ES ASÍNCRONA,
 //POR LO QUE EL VALOR DE selectedTopic NO SE ACTUALIZA INMEDIATAMENTE DESPUÉS DE LLAMAR A setSelectedTopic,
+//con el operadro {!selectedTopic} se evalúa si selectedTopic es null o undefined, lo que indica que no se ha seleccionado ningún tema aún
 function App() {
-  const [selectedTopic, setSelectedTopic] = useState("components");
+  const [selectedTopic, setSelectedTopic] = useState(null);
   //usamos la desestructuración de arrays para obtener el valor actual del estado (selectedTopic) y la función para actualizarlo (setselectedTopic)
   //con la primera obtenemos el valor seleccionado y con la segunda lo establecemos/actualizamos
   //setSeelected topic siempre es al funcion que actualiza el estado
@@ -56,13 +57,19 @@ function App() {
             Estados
           </TabButton>
         </menu>
-        <div id="tab-content">
-          <h3>{EXAMPLES[selectedTopic].title}</h3>
-          <p>{EXAMPLES[selectedTopic].description}</p>
-          <pre>
-            <code>{EXAMPLES[selectedTopic].code}</code>
-          </pre>
-        </div>
+        {!selectedTopic ? (
+          <p>
+            Aqui se vana describir las fucniones de react, elige una de ellas
+          </p>
+        ) : (
+          <div id="tab-content">
+            <h3>{EXAMPLES[selectedTopic].title}</h3>
+            <p>{EXAMPLES[selectedTopic].description}</p>
+            <pre>
+              <code>{EXAMPLES[selectedTopic].code}</code>
+            </pre>
+          </div>
+        )}
       </section>
 
       <main>
