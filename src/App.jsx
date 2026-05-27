@@ -32,6 +32,24 @@ function App() {
     setSelectedTopic(SelectedButton); //Aquí se actualiza el estado selectedTopic con el nombre del botón clickeado
     console.log(`Has hecho click en el botón: ${selectedTopic}`); //Aquí se muestra el nombre del botón que se ha clickeado
   }
+
+  //AQUI COLOCAMOS EL CONTENIDO QUE SE VA A MOSTAR EN EL TAB DEPENDIENDO DEL BOTON QUE SE HAYA CLICKEADO,
+  //SI NO SE HA CLICKEADO NINGUN BOTON SE MUESTRA UN MENSAJE POR DEFECTO
+  let tabCoontet = (
+    <p>Aqui se vana describir las fucniones de react, elige una de ellas</p>
+  );
+
+  if (selectedTopic) {
+    tabCoontet = (
+      <div id="tab-content">
+        <h3>{EXAMPLES[selectedTopic].title}</h3>
+        <p>{EXAMPLES[selectedTopic].description}</p>
+        <pre>
+          <code>{EXAMPLES[selectedTopic].code}</code>
+        </pre>
+      </div>
+    );
+  }
   return (
     <div>
       <Header />
@@ -57,19 +75,7 @@ function App() {
             Estados
           </TabButton>
         </menu>
-        {!selectedTopic ? (
-          <p>
-            Aqui se vana describir las fucniones de react, elige una de ellas
-          </p>
-        ) : (
-          <div id="tab-content">
-            <h3>{EXAMPLES[selectedTopic].title}</h3>
-            <p>{EXAMPLES[selectedTopic].description}</p>
-            <pre>
-              <code>{EXAMPLES[selectedTopic].code}</code>
-            </pre>
-          </div>
-        )}
+        {tabCoontet}
       </section>
 
       <main>
