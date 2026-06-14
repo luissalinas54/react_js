@@ -9,12 +9,14 @@ import "./TabButton.css";
 //utilizamos handleClic en vez de handleClic() porque con la segunda opcion la funcion se ejecutaria inmediatamente al renderizar el componente,
 //en cambio con la primera opcion se ejecuta solo cuando se hace click en el boton
 
-export default function TabButton({ children, onClick }) {
+export default function TabButton({ children, onClick, isSelected }) {
   //CREAMOS LA FUNCION PARA EL BOTON
 
   return (
     <li>
-      <button onClick={onClick}>{children}</button>
+      <button className={isSelected ? "active" : ""} onClick={onClick}>
+        {children}
+      </button>
     </li>
   );
 }
