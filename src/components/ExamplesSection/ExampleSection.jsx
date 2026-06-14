@@ -32,41 +32,19 @@ export default function ExampleSection() {
       </div>
     );
   }
+
+  //CON EL METODO OBJECT. TRANSFORMAMOS TODOS LOS ELEMENTOS DE UN OBJETO {} EN UN ARRAY [{}]
+  //CONSTANTE PARA MOSTRAR LOS BOTONES DE LA SECCION EXAMPLES
+  const buttons = Object.values(EXAMPLES).map((button, index) => (
+    <TabButton key={index} onClick={() => handleClickMenu(button.key)}>
+      {button.title}
+    </TabButton>
+  ));
+
   //AQUI SOLO PUEDE IR CONTENIDO DE JSX
   return (
     <Section title="Ejemplos de React" id="reactExamples" className="miClase">
-      <TabsMenu
-        buttons={
-          <>
-            <TabButton
-              isSelected={selectedTopic === "components"}
-              onClick={() => handleClickMenu("components")}
-            >
-              Componente
-            </TabButton>
-            <TabButton
-              isSelected={selectedTopic === "jsx"}
-              onClick={() => handleClickMenu("jsx")}
-            >
-              JSX
-            </TabButton>
-            <TabButton
-              isSelected={selectedTopic === "props"}
-              onClick={() => handleClickMenu("props")}
-            >
-              Props
-            </TabButton>
-            <TabButton
-              isSelected={selectedTopic === "state"}
-              onClick={() => handleClickMenu("state")}
-            >
-              Estados
-            </TabButton>
-          </>
-        }
-      >
-        {tabContent}
-      </TabsMenu>
+      <TabsMenu buttons={<>{buttons}</>}>{tabContent}</TabsMenu>
     </Section>
   );
 }
