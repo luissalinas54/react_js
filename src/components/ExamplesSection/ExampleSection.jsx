@@ -44,7 +44,9 @@ export default function ExampleSection() {
   //AQUI SOLO PUEDE IR CONTENIDO DE JSX
   return (
     <Section title="Ejemplos de React" id="reactExamples" className="miClase">
-      <TabsMenu buttons={<>{buttons}</>}>{tabContent}</TabsMenu>
+      <TabsMenu ButtonsContainer="menu" buttons={<>{buttons}</>}>
+        {tabContent}
+      </TabsMenu>
     </Section>
   );
 }
