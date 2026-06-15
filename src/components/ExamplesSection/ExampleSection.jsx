@@ -50,3 +50,14 @@ export default function ExampleSection() {
     </Section>
   );
 }
+
+//EN PROYECTOS ANTIGUOS DE REACT ASI ES COMO SE COLOCAN VALORES POR DEFECTO
+// TabsMenu.defaultProps = {
+//   buttons: (
+//     <li>
+//       <button>Defautl Conten</button>
+//     </li>
+//   ),
+//   children: <p>Default Content</p>,
+//   ButtonsContainer: (children) => <div>{children}</div>,
+// };
